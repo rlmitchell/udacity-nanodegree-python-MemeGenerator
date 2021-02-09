@@ -31,7 +31,6 @@ class MemeEngine:
         if not body:  body = 'No Body Supplied'
         if not author:  author = 'No Author Supplied'
         out_path = self.results_dir+'/'+str(time.time()).replace('.','-')+'.jpg'
-        #fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", 10)
         fnt = ImageFont.truetype('dejavu/DejaVuSansMono.ttf', 10)
         img = Image.open(img_path)
         img = self._resize_image(img, width)

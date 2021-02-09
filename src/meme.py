@@ -34,6 +34,12 @@ def generate_meme(path=None, body=None, author=None):
     body = body if body is not None else default_quote.body
     author = author if author is not None else default_quote.author
 
+    print('-----')
+    print(img)
+    print(body)
+    print(author)
+    print('-----')
+
     meme = MemeEngine('./tmp')
     path = meme.make_meme(img, body, author)
     return path
@@ -41,12 +47,10 @@ def generate_meme(path=None, body=None, author=None):
 
 def display(path):
     """Wrapper for original print.  Prints the meme file location
-    and displays it if possible."""
+    and displays it if possible.  Function used in development."""
     print(path)
     if 'linux' in os.sys.platform:
-        if 'display' in subprocess.check_output('which display',
-                                                shell=True).decode():
-            subprocess.run('display '+path, shell=True)
+        subprocess.run('display '+path, shell=True)
 
 
 if __name__ == "__main__":
@@ -63,4 +67,4 @@ if __name__ == "__main__":
                         help='author of quote')
 
     args = parser.parse_args()
-    display(generate_meme(args.path, args.body, args.author))
+    print(generate_meme(args.path, args.body, args.author))
